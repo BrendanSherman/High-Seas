@@ -1,0 +1,5 @@
+var combatState = {
+    create: function () {
+        
+    }
+};
