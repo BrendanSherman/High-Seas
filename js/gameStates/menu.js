@@ -13,11 +13,11 @@ var menuState = {
         background = game.add.sprite(0, 0, 'menuImage'); //scale and draw bg
         background.scale.setTo(windowWidth/background.width, windowHeight/background.height);
 
-        game.add.button(10, 4 * (game.world.height / 6), 'button1', startGame, this);
-        game.add.text(75, 4 * (game.world.height/6), 'Play!', fontMed);
+        game.add.button(10, 9 * (game.world.height /10), 'button1', startGame, this);
+        game.add.text(75, 9 * (game.world.height/10), 'Play!', fontMed);
 
         game.add.text(game.world.width/14, game.world.height/69, 'Welcome to HighSeas.io!', fontLarge);
-        game.add.text(game.world.width/14, 8 * game.world.height/69, 'Developed by Brendan Sherman only', fontMed);
+        game.add.text(game.world.width/14, 8 * game.world.height/69, 'A very fun game yes', fontMed);
 
     },
 

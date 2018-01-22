@@ -5,7 +5,7 @@ UNUSED
 
 var tutorialProgress = 0;
 var playerShip;
-var beachAmbience
+var beachAmbience;
 var enemy1;
 
 var tutState = {

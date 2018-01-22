@@ -1,4 +1,5 @@
 var ship; //group to hold all sprites associated with the playerboat
+
 playerBoat = function(x,y,dir, sprite, health){
     Phaser.Sprite.call(this, game, x, y, sprite); //constructs a sprite
     game.physics.enable(this, Phaser.Physics.ARCADE);
@@ -9,12 +10,12 @@ playerBoat = function(x,y,dir, sprite, health){
     this.healthBar = game.add.sprite(this.x-64, this.y - 100, 'health');
 
 
-    ship = game.add.group(); //Ship and health bar group
+    ship = game.add.group();
     ship.add(this);
     ship.add(this.healthBar);
 
     this.body.maxVelocity.setTo(200, 200);
-    this.body.drag.set(0.2); //don't glide
+    this.body.drag.set(0); //don't glide
     this.body.collideWorldBounds = true; //can't leave world
 
     this.health = health;
@@ -43,7 +44,6 @@ playerBoat.prototype.update = function () {
     else
         this.speed=0;
 
-
     if(wasd.left.isDown && this.speed > 0){
         this.angle -= 1.5;
         this.speed-= .1;
@@ -59,7 +59,7 @@ playerBoat.prototype.update = function () {
         var spritex = this.body.x - game.camera.x;
         var spritey = this.body.y - game.camera.y;
 
-        if(this.cannon.ready && game.input.mousePointer.y < (8 * (windowHeight / 10))) {
+        if(this.cannon.ready) {
             cannonSound.play();
             //fire cannon towards cursor
             this.cannon.fire(Math.atan2(spritey - game.input.mousePointer.y, spritex - game.input.mousePointer.x) * 180 / Math.PI - 180);
@@ -67,7 +67,7 @@ playerBoat.prototype.update = function () {
     }
 
     if (wasd.spaceKey.isDown) { //fire mortar
-        if(this.mortar.ready && game.input.mousePointer.y < (8 * (windowHeight / 10))) {
+        if(this.mortar.ready) {
             this.mortar.fire(game.input.mousePointer.x + game.camera.x, game.input.mousePointer.y + game.camera.y);
         }
     }
