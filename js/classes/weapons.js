@@ -1,3 +1,6 @@
+const BULLETSCALE = 0.3;
+
+
 var angleBetween = function(x,y, x2,y2) {
     return Math.atan2(y-y2, x-x2) * 180 / Math.PI - 180;
 };
@@ -5,6 +8,7 @@ var angleBetween = function(x,y, x2,y2) {
 var getCursorPos = function() {
     return {x:game.input.mousePointer.x + game.camera.x, y:game.input.mousePointer.y + game.camera.y};
 };
+
 
 var Cannonball = function(key) {
     Phaser.Sprite.call(this, game, 0, 0, key);
@@ -20,7 +24,7 @@ Cannonball.prototype.constructor = Cannonball;
 
 Cannonball.prototype.fire = function(x,y, angle, speed) {
     this.reset(x,y);
-    this.scale.set(1);
+    this.scale.set(BULLETSCALE);
     this.game.physics.arcade.velocityFromAngle(angle, speed, this.body.velocity);
     this.angle = angle;
 };
@@ -76,7 +80,7 @@ Mortarball.prototype.constructor = Mortarball;
 // TODO: CLEAN THIS GARBAGE UP
 Mortarball.prototype.fire = function(x,y, destx, desty, v0) {
     this.reset(x,y);
-    this.scale.set(.1);
+    this.scale.set(BULLETSCALE);
     this.angle = angleBetween(x,y, destx,desty);
     this.v0 = v0;
     this.t0 = game.time.now;
@@ -93,7 +97,7 @@ Mortarball.prototype.update = function() {
     if (this.exists) {
         let t = (game.time.now - this.t0)/1000;
         let h =  this.v0*t*this.sina0 - (9.86*(t**2))/2; //sad face
-        this.scale.x = this.scale.y = h/3 + 1;
+        this.scale.x = this.scale.y = (h/3+1)*BULLETSCALE;
     }
 
 };
