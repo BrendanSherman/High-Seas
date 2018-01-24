@@ -1,16 +1,15 @@
-# Pirates!
-Pirate game made in Phaser (JS)
+
 
 # Contributors
-
-Mr. Art:
+Mr. Fired:
   Nathaniel Jeffries
 
-Mr. Webdesign and Mr. QA:
+Mr. Ai:
   Aidan Glickman
   
 Mr. Code:
   Brendan Sherman xox <3
+  
+Mr. Break Repository  
+  Lennon Okun
 
-NOTES: 
-* https://dribbble.com/trzown
